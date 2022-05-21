@@ -8,7 +8,7 @@ export default {
             price: 3.99,
             rating: 5.0,
             numReviews: 12,
-            quantityInStock: 2,
+            quantityInStock: 20,
             unitMeasure: "kg",
             description: "Mexican avocado.",
             Ingredients: "Water, fat, carbohydrates, and  protein",
@@ -22,7 +22,7 @@ export default {
             price: 2.69,
             rating: 3.2,
             numReviews: 34,
-            quantityInStock: 120,
+            quantityInStock: 67,
             unitMeasure: "L",
         },
         {
