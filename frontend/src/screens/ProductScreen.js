@@ -28,7 +28,7 @@ const ProductScreen = {
         return `
         <div class="product-content">
             <div class="back-to-result">
-                <a href="/#/"><i class="bi bi-arrow-bar-left"></i> Back</a>
+                <a href="/#/"><i class="bi bi-arrow-left"></i></a>
             </div>
             <div class="details">
                 <div class="details-image">
