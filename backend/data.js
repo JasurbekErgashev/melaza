@@ -47,6 +47,7 @@ export default {
             numReviews: 40,
             quantityInStock: 280,
             unitMeasure: "kg",
+            description: "Cavendish banana. Ingredients: no fat, protein, carbohydrate, sugar, fiber, and potassium. Benefits: rich in nutrients, may improve blood sugar levels, may support digestive health, may aid weight loss, may support heart health.",
         },
         {
             _id: "5",
