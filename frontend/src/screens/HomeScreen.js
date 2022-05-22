@@ -70,19 +70,12 @@ const HomeScreen = {
                           <div class="product-rating">
                             ${Rating.render({value: `${product.rating}`, text: `${product.numReviews} reviews`})}
                           </div>
-                          <div class="quantity-price">
-                              <div class="product-quantity">
-                                  <button class="btn minus" id="${product.name}">-</button>
-                                  <span class="q-num" id="${product.name}">0</span>
-                                  <button class="btn plus" id="${product.name}">+</button>
-                              </div>
+                          <div class="product-buttons">
+                              <a href="/#/cart"  class="buynow btn btn-primary" id="cartCheckout">Buy Now</a>
                               <div class="product-price">
                                   $${product.price}/${product.unitMeasure}
                               </div>
-                          </div>
-                          <div class="product-buttons">
-                              <a href="/#/cart"  class="buynow btn btn-primary" id="cartCheckout">Buy Now</a>
-                              <button class="btn addCart" id="addBasket"><img src="./images/homepage/main/cart-plus.svg" alt="cart-plus"></button>
+                              
                           </div>
                       </div>
                   </li>
