@@ -6,3 +6,29 @@ export const getCartItems = () =>{
 export const setCartItems = (cartItems) =>{
     localStorage.setItem("cartItems", JSON.stringify(cartItems));
 };
+
+export const setUserInfo = ({
+    _id = "",
+    name = "",
+    email = "",
+    password = "",
+    token = "",
+    isAdmin = false,
+}) =>{
+    localStorage.setItem("userInfo", JSON.stringify({
+        _id,
+        name,
+        email,
+        password,
+        token,
+        isAdmin,
+      })
+    );
+};
+
+// eslint-disable-next-line arrow-body-style
+export const getUserInfo = () =>{
+    return localStorage.getItem("userInfo") ? 
+    JSON.parse(localStorage.getItem("userInfo")) : 
+    {name: "", email: "", password: ""};
+};

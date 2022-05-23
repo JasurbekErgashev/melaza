@@ -4,6 +4,7 @@ import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import ProductScreen from "./screens/ProductScreen";
 import { parseRequestUrl } from "./utils";
+import Navbar from "./components/Navbar";
 
 const routes = {
     "/": HomeScreen,
@@ -19,6 +20,9 @@ const router = async() => {
     (request.id ? "/:id" : "") + 
     (request.verb ? `/${request.verb}` : "");
     const screen = routes[parseUrl] ? routes[parseUrl] : Error404Screen;
+    const navbar = document.getElementById("navbar-container");
+    navbar.innerHTML = await Navbar.render();
+    await Navbar.after_render();
     const main = document.getElementById("main-container");
     main.innerHTML = await screen.render();
     // to rerender additional JS code after rendering

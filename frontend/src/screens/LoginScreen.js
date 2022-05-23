@@ -1,7 +1,38 @@
+import { login } from "../api";
+import { getUserInfo, setUserInfo } from "../localStorage";
+
 /* eslint-disable arrow-body-style */
 const LoginScreen = {
-    after_render: () =>{},
+    after_render: () =>{
+        document.getElementById("signin-form").addEventListener("submit", async(e) => {
+            e.preventDefault();
+            const data = await login({
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value,
+            });
+            if(data.error){
+                alert(data.error);
+            }else{
+                setUserInfo(data);
+                document.location.hash = "/";
+            }
+        });
+        // pasword is visible or hidden according to the click of the checkbox
+        const passwordCheck = document.getElementById("password");
+        document.getElementById("checkPassword").addEventListener("click", () => {
+            if(passwordCheck.type === "password"){
+                passwordCheck.type = "text";
+            }else{
+                passwordCheck.type = "password";
+            }
+        });
+    },
     render: () =>{
+        // for the users who signed in just save their data in localStorage 
+        // and then if they try again just redirect them to the homepage
+        if(getUserInfo().name){
+            document.location.hash = "/";
+        }
         return `
             <div>
                 <div class="modal-dialog modal-dialog-centered">
@@ -20,7 +51,11 @@ const LoginScreen = {
                                     <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                                     <label for="password" class="form-label">Password</label>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" value="FakePSW" id="checkPassword">
+                                    <label class="form-check-label" for="checkPassword" onclick="showPassword()">Show Password</label>
+                                </div>
+                                <button type="submit" class="btn btn-primary mt-3">Login</button>
                                 <div class="mt-3">
                                     <p>New User? <a href="/#/register">Create Your Account</a></p>
                                 </div>
