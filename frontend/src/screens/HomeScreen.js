@@ -1,7 +1,7 @@
 /* eslint-disable quotes */
 import axios from "axios";
 import Rating from "../components/Rating";
-import { parseRequestUrl } from "../utils";
+import { hideLoading, parseRequestUrl, showLoading } from "../utils";
 
 const HomeScreen = {
     
@@ -43,13 +43,14 @@ const HomeScreen = {
         // });
     },
     render: async() =>{
-       
+       showLoading();
         const response = await axios({
             url: "http://localhost:3000/api/products",
             headers: {
                 "Content-Type": "application/json",
             },
         });
+        hideLoading();
         if(!response || response.statusText !== "OK"){
             return "<div>Error in getting products data</div>";
         }

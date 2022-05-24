@@ -1,14 +1,19 @@
-import { login } from "../api";
-import { getUserInfo, setUserInfo } from "../localStorage";
-import { hideLoading, redirectUser, showLoading, showMessage } from "../utils";
+import { update } from "../api";
+import { clearUser, getUserInfo, setUserInfo } from "../localStorage";
+import { hideLoading, showLoading, showMessage } from "../utils";
 
 /* eslint-disable arrow-body-style */
-const LoginScreen = {
+const ProfileScreen = {
     after_render: () =>{
-        document.getElementById("signin-form").addEventListener("submit", async(e) => {
+        document.getElementById("signout-button").addEventListener("click", () =>{
+            clearUser();
+            document.location.hash = "/";
+        });
+        document.getElementById("profile-form").addEventListener("submit", async(e) => {
             e.preventDefault();
             showLoading();
-            const data = await login({
+            const data = await update({
+                name: document.getElementById("name").value,
                 email: document.getElementById("email").value,
                 password: document.getElementById("password").value,
             });
@@ -17,7 +22,7 @@ const LoginScreen = {
                 showMessage(data.error);
             }else{
                 setUserInfo(data);
-                redirectUser();
+                document.location.hash = "/";
             }
         });
         // pasword is visible or hidden according to the click of the checkbox
@@ -31,37 +36,38 @@ const LoginScreen = {
         });
     },
     render: () =>{
-        // for the users who signed in just save their data in localStorage 
-        // and then if they try again just redirect them to the homepage
-        if(getUserInfo().name){
-            redirectUser();
+        const {name, email} = getUserInfo();
+        if(!name){
+            document.location.hash = "/";
         }
         return `
             <div>
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="loginLabel">Login</h5>
+                            <h5 class="modal-title" id="registerLabel">${name}'s profile</h5>
                         </div>
                         <div class="modal-body">
-                            <form id="signin-form">
+                            <form id="profile-form">
+                                <div class="mb-3 form-floating">
+                                    <input type="text" class="form-control" name="name" id="name" placeholder="Name" value="${name}">
+                                    <label for="name" class="form-label">Name</label>
+                                </div>
                                 <div class="mb-3 form-floating" >
-                                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email" required>
+                                    <input type="email" class="form-control" name="email" id="email" aria-describedby="emailHelp" placeholder="Email" value="${email}">
                                     <label for="email" class="form-label">Email</label>
-                                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
                                 </div>
                                 <div class="mb-3 form-floating">
-                                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
+                                    <input type="password" minlength="8" class="form-control" name="password" id="password" placeholder="Password">
                                     <label for="password" class="form-label">Password</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" value="FakePSW" id="checkPassword">
                                     <label class="form-check-label" for="checkPassword" onclick="showPassword()">Show Password</label>
                                 </div>
-                                <button type="submit" class="btn btn-primary mt-3">Login</button>
-                                <div class="mt-3">
-                                    <p>New User? <a href="/#/register">Create Your Account</a></p>
-                                </div>
+                                <button type="submit" class="btn btn-success mt-3">Update</button>
+                                <button type="button" class="btn btn-danger mt-3" id="signout-button">Sign Out</button>
+                                
                             </form>
                         </div>
                     </div>
@@ -71,4 +77,4 @@ const LoginScreen = {
     }
 };
 
-export default LoginScreen;
+export default ProfileScreen;
