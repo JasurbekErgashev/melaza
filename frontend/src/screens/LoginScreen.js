@@ -1,6 +1,6 @@
 import { login } from "../api";
 import { getUserInfo, setUserInfo } from "../localStorage";
-import { hideLoading, showLoading, showMessage } from "../utils";
+import { hideLoading, redirectUser, showLoading, showMessage } from "../utils";
 
 /* eslint-disable arrow-body-style */
 const LoginScreen = {
@@ -17,7 +17,7 @@ const LoginScreen = {
                 showMessage(data.error);
             }else{
                 setUserInfo(data);
-                document.location.hash = "/";
+                redirectUser();
             }
         });
         // pasword is visible or hidden according to the click of the checkbox
@@ -34,7 +34,7 @@ const LoginScreen = {
         // for the users who signed in just save their data in localStorage 
         // and then if they try again just redirect them to the homepage
         if(getUserInfo().name){
-            document.location.hash = "/";
+            redirectUser();
         }
         return `
             <div>

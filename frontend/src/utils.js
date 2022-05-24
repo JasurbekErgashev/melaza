@@ -1,3 +1,5 @@
+import { getCartItems } from "./localStorage";
+
 /* eslint-disable import/prefer-default-export */
 export const parseRequestUrl = () => {
     const url = document.location.hash.toLowerCase();
@@ -36,4 +38,12 @@ export const showMessage = (message, callback) =>{
             callback();
         }
     });
+};
+
+export const redirectUser = () =>{
+    if(getCartItems().length !== 0){
+        document.location.hash = "/address";
+    }else{
+        document.location.hash = "/";
+    }
 };

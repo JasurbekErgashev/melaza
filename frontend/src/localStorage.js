@@ -38,3 +38,39 @@ export const getUserInfo = () =>{
     JSON.parse(localStorage.getItem("userInfo")) : 
     {name: "", email: "", password: ""};
 };
+
+// for getting the data of input and saving it into the local Storage
+
+export const getAddress = () =>{
+    const address = localStorage.getItem("address") ? JSON.parse(localStorage.getItem("address")) :
+    {
+        address: "",
+        city: "",
+        postalCode: "",
+        country: "",
+    };
+    return address;
+};
+
+export const setAddress = ({
+    address = "",
+    city = "",
+    postalCode = "",
+    country = "",
+}) => {
+    localStorage.setItem("address", JSON.stringify({address, city, postalCode, country}));
+};
+
+// for payment
+
+export const getPayment = () =>{
+    const payment = localStorage.getItem("payment") ? JSON.parse(localStorage.getItem("payment")) :
+    {
+        paymentMethod: "payme",
+    };
+    return payment;
+};
+
+export const setPayment = ({ paymentMethod = "payme" }) => {
+    localStorage.setItem("payment", JSON.stringify({paymentMethod}));
+};

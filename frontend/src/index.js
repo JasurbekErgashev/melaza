@@ -7,6 +7,8 @@ import { hideLoading, parseRequestUrl, showLoading } from "./utils";
 import Navbar from "./components/Navbar";
 import RegisterScreen from "./screens/RegisterScreen";
 import ProfileScreen from "./screens/ProfileScreen";
+import AddressScreen from "./screens/AddressScreen";
+import PaymentScreen from "./screens/PaymentScreen";
 
 
 const routes = {
@@ -17,6 +19,8 @@ const routes = {
     "/login": LoginScreen,
     "/register": RegisterScreen,
     "/profile": ProfileScreen,
+    "/address": AddressScreen,
+    "/payment": PaymentScreen,
 };
 
 const router = async() => {
