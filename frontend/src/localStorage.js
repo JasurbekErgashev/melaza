@@ -26,6 +26,12 @@ export const setUserInfo = ({
     );
 };
 
+// clearing the User info from the local storage
+export const clearUser = () =>{
+    localStorage.removeItem("userInfo");
+};
+
+
 // eslint-disable-next-line arrow-body-style
 export const getUserInfo = () =>{
     return localStorage.getItem("userInfo") ? 

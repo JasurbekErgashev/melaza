@@ -26,7 +26,7 @@ export const login = async({email, password}) => {
         const response = await axios({
             url: `${apiUrl}/api/users/login`,
             method: "POST",
-            header: {
+            headers: {
                 "Content-Type": "application/json",
             },
             data: {
@@ -50,7 +50,7 @@ export const register = async({name, email, password}) => {
         const response = await axios({
             url: `${apiUrl}/api/users/register`,
             method: "POST",
-            header: {
+            headers: {
                 "Content-Type": "application/json",
             },
             data: {
@@ -76,7 +76,7 @@ export const update = async({name, email, password}) => {
         const response = await axios({
             url: `${apiUrl}/api/users/${_id}`,
             method: "PUT",
-            header: {
+            headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`,
             },

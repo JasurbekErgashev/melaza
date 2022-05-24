@@ -1,10 +1,14 @@
 import { update } from "../api";
-import { getUserInfo, setUserInfo } from "../localStorage";
+import { clearUser, getUserInfo, setUserInfo } from "../localStorage";
 import { hideLoading, showLoading, showMessage } from "../utils";
 
 /* eslint-disable arrow-body-style */
 const ProfileScreen = {
     after_render: () =>{
+        document.getElementById("signout-button").addEventListener("click", () =>{
+            clearUser();
+            document.location.hash = "/";
+        });
         document.getElementById("profile-form").addEventListener("submit", async(e) => {
             e.preventDefault();
             showLoading();
@@ -62,6 +66,7 @@ const ProfileScreen = {
                                     <label class="form-check-label" for="checkPassword" onclick="showPassword()">Show Password</label>
                                 </div>
                                 <button type="submit" class="btn btn-success mt-3">Update</button>
+                                <button type="button" class="btn btn-danger mt-3" id="signout-button">Sign Out</button>
                                 
                             </form>
                         </div>

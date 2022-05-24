@@ -1,7 +1,7 @@
 import express from "express";
 import expressAsyncHandler from "express-async-handler";
 import User from "../models/userModel";
-import { generateToken } from "../utils";
+import { generateToken, isAuth } from "../utils";
 
 const userRouter = express.Router();
 
@@ -68,7 +68,7 @@ userRouter.post("/register", expressAsyncHandler(async (req, res) =>{
     }) 
 );
 
-userRouter.put("/:id", expressAsyncHandler(async (req, res) =>{
+userRouter.put("/:id", isAuth, expressAsyncHandler(async (req, res) =>{
     // to find the user from the database using id
     const user = await User.findById(req.params.id);
     if(!user){
