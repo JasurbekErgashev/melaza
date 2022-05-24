@@ -440,6 +440,49 @@ a{
     font-size: 24px !important;
 }
 
+
+/* Admin Dashboard */
+.dashboard{
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+}
+.dashboard h1{
+    font-size: 3rem;
+    margin: 1rem 0;
+}
+.dashboard-menu{
+    margin: 20px;
+    flex: 1 1 8rem;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 24px 0 rgb(86 91 115 / 15%);
+}
+.dashboard-menu ul{
+    padding: 0;
+}
+.dashboard-menu a{
+    text-decoration: none;
+    display: flex;
+    padding: 1rem;
+    padding-left: 2rem;
+    justify-content: space-between;
+}
+.dashboard-menu a:hover{
+    background-color: #9BA3EB;
+    color: #fff;
+}
+.dashboard-menu li.selected a{
+    background-color: #646FD4;
+    color: #DBDFFD;
+}
+.dashboard-content{
+    flex: 4 1 30rem;
+    padding: 1rem;
+}
+
+
+
+
 /* Search bar design */
 /* 
 .wrapper

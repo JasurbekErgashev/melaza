@@ -10,6 +10,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import AddressScreen from "./screens/AddressScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import OrderScreen from "./screens/OrderScreen";
+import DashboardScreen from "./screens/DashboardScreen";
 
 
 const routes = {
@@ -23,6 +24,7 @@ const routes = {
     "/address": AddressScreen,
     "/payment": PaymentScreen,
     "/order": OrderScreen,
+    "/dashboard": DashboardScreen,
 };
 
 const router = async() => {

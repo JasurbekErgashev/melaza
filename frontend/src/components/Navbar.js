@@ -4,12 +4,13 @@ import { getUserInfo } from "../localStorage";
 /* eslint-disable arrow-body-style */
 const Header = {
     render: () => {
-        const {name} = getUserInfo();
+        const {name, isAdmin} = getUserInfo();
         return `
         <div class="brand">
             <a class="navbar-brand" href="/#/"><img class="logo-img img-fluid" src="./images/homepage/main/logo.svg" alt="logo-img">Melaza</a>
         </div>
         <div class="nav-links">
+            ${isAdmin ? `<a href="/#/dashboard">Dashboard</a>` : ''}
             <div class="shopping-cart btn" id="cart-basket">
                 <a href="/#/cart/">
                   <img class="shopping-cart-icon" src="./images/homepage/main/cart.svg" alt="shopping-cart">
@@ -17,7 +18,7 @@ const Header = {
                     <span id="basket">0</span>
                   </div>
                 </a>
-              </div>
+            </div>
               <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">Login</button> -->
               
               ${name ? `<a class="profile-name" href="/#/profile"><i class="bi bi-person"></i>${name}</a>` : `<a href="/#/login" class="btn btn-primary">Login</a>`}
