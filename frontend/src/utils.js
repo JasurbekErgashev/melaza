@@ -24,10 +24,9 @@ export const hideLoading = () =>{
 
 export const showMessage = (message, callback) =>{
     document.getElementById("message-overlay").innerHTML = `
-    <div>
-        <div id="message-overlay-content">${message}</div>
-        <div id="message-overlay-close-button">OK</div>
-
+    <div class="card m-5">
+        <div id="message-overlay-content" class="card-body font-weight-bold">${message}</div>
+        <a id="message-overlay-close-button" class="btn btn-primary">OK</a>
     </div>
     `;
     document.getElementById("message-overlay").classList.add("active");
