@@ -6,6 +6,7 @@ import ProductScreen from "./screens/ProductScreen";
 import { hideLoading, parseRequestUrl, showLoading } from "./utils";
 import Navbar from "./components/Navbar";
 import RegisterScreen from "./screens/RegisterScreen";
+import ProfileScreen from "./screens/ProfileScreen";
 
 
 const routes = {
@@ -15,6 +16,7 @@ const routes = {
     "/cart": CartScreen,
     "/login": LoginScreen,
     "/register": RegisterScreen,
+    "/profile": ProfileScreen,
 };
 
 const router = async() => {
@@ -38,7 +40,7 @@ const router = async() => {
     const main = document.getElementById("main-container");
     main.innerHTML = await screen.render();
     // to rerender additional JS code after rendering
-    await screen.after_render();
+    if (screen.after_render) await screen.after_render();
 
     hideLoading();
 
