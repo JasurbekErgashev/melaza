@@ -1,17 +1,20 @@
 import { login } from "../api";
 import { getUserInfo, setUserInfo } from "../localStorage";
+import { hideLoading, showLoading, showMessage } from "../utils";
 
 /* eslint-disable arrow-body-style */
 const LoginScreen = {
     after_render: () =>{
         document.getElementById("signin-form").addEventListener("submit", async(e) => {
             e.preventDefault();
+            showLoading();
             const data = await login({
                 email: document.getElementById("email").value,
                 password: document.getElementById("password").value,
             });
+            hideLoading();
             if(data.error){
-                alert(data.error);
+                showMessage(data.error);
             }else{
                 setUserInfo(data);
                 document.location.hash = "/";
