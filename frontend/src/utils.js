@@ -40,6 +40,25 @@ export const showMessage = (message, callback) =>{
     });
 };
 
+export const showEndJournay = (callback) =>{
+    document.getElementById("message-overlay").innerHTML = `
+    <div class="card m-5">
+        <div id="message-overlay-content" class="card-body font-weight-bold">
+            <h6>Sorry, This is the end of a journay for now :(</h6>
+            <p>- Melaza team</p>
+        </div>
+        <a id="message-overlay-close-button" class="btn btn-primary">OK</a>
+    </div>
+    `;
+    document.getElementById("message-overlay").classList.add("active");
+    document.getElementById("message-overlay-close-button").addEventListener("click", () =>{
+        document.getElementById("message-overlay").classList.remove("active");
+        if(callback){
+            callback();
+        }
+    });
+};
+
 export const redirectUser = () =>{
     if(getCartItems().length !== 0){
         document.location.hash = "/address";

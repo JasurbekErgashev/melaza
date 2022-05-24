@@ -20,7 +20,7 @@ const Header = {
               </div>
               <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">Login</button> -->
               
-              ${name ? `<a href="/#/profile">${name}</a>` : `<a href="/#/login" class="btn btn-primary">Login</a>`}
+              ${name ? `<a class="profile-name" href="/#/profile"><i class="bi bi-person"></i>${name}</a>` : `<a href="/#/login" class="btn btn-primary">Login</a>`}
         </div>
         `;
     },

@@ -152,6 +152,17 @@ a{
     color: #363062;
     padding-left: 30px;
 }
+.bi-person{
+    font-size: 20px;
+    color: #0066ff;
+    font-weight: 500;
+    padding-right: 5px;
+}
+.profile-name{
+    font-weight: 500;
+    font-size: 20px;
+    text-decoration: none;
+}
 
 /* Product details */
 .product-content .details{
@@ -283,11 +294,13 @@ a{
     font-weight: 500;
 }
 .cart-name{
-    margin-right: 100px;
     display: flex;
     flex-direction: column;
+}
+.cart-name .product-name{
+    display: flex;
+    align-items: center;
     justify-content: space-between;
-    align-items: flex-start;
 }
 .cart-name .product-name a{
     color: #363062;
@@ -297,10 +310,15 @@ a{
 .cart-name .product-name a:hover{
     color: #0066ff;
 }
+.orderProduct{
+    color: #0066ff;
+    font-size: 22px;
+    text-decoration: none;
+}
 .but-select{
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 .but-select .select-first{
@@ -318,7 +336,6 @@ a{
     padding-right: 20px;
 }
 .cart-price{
-    
     text-align: right;
     font-weight: 500;
 }
@@ -371,6 +388,56 @@ a{
 .checkout-steps > div.active{
     color: #357C3C;
     border-top-color:#363062;
+}
+
+/* Order */
+.order{
+    display: flex;
+    flex: wrap;
+    padding: 1rem;
+    justify-content: space-between;
+}
+.order h2{
+    margin: 0;
+    font-size: 1.8rem;
+}
+.order .cart-list-container{
+    padding: 0;
+}
+/* .order-info{
+    flex: 3 1 60rem;
+} */
+.order-info > div{
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 24px 0 rgb(86 91 115 / 15%);
+    border-radius: 25px;
+    padding: 1rem;
+    margin: 1rem;
+}
+.order-info > div:first-child{
+    margin-top: 0;
+}
+.order-action{
+    /* flex: 2 1 20 rem; */
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 24px 0 rgb(86 91 115 / 15%);
+    border-radius: 25px;
+    padding: 1rem;
+}
+.order-action > ul{
+    padding: 0;
+    list-style-type: none;
+}
+.order-action li{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+}
+.order-action .total{
+    font-weight: 500;   
+}
+.orderSummary{
+    font-size: 24px !important;
 }
 
 /* Search bar design */
