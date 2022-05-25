@@ -5,6 +5,7 @@ import bodyParser from "body-parser";
 import data from "./data";
 import config from "./config";
 import userRouter from "./routers/userRouter";
+import productRouter from "./routers/productRouter";
 
 
 // config.MONGODB_URL
@@ -27,6 +28,8 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.use("/api/users", userRouter);
+app.use("/api/products", productRouter);
+
 
 app.get("/api/products", (req, res)=> {
     res.send(data.products);
