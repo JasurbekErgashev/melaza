@@ -22,6 +22,7 @@ const Header = {
             <div class="shopping-cart btn" id="cart-basket">
                 <a href="/#/cart/">
                   <img class="shopping-cart-icon" src="./images/homepage/main/cart.svg" alt="shopping-cart">
+                  
                 </a>
             </div>
               <!-- <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#login">Login</button> -->

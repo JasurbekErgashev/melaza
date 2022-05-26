@@ -7,8 +7,7 @@
     "start": "nodemon --watch backend --exec babel-node backend/server.js",
     "build": "rm -rf dist && babel backend -d dist && cd frontend && npm install && npm run build",
     "serve": "node dist/server.js",
-    "heroku-prebuild": "cd frontend && npm install --dev",
-    "heroku-postbuild": "npm run build && cd frontend && npm install && npm run build"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Melaza team",
   "license": "ISC",
@@ -32,9 +31,5 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-import": "^2.26.0",
     "nodemon": "^2.0.16"
-  },
-  "engines": {
-    "node": "12.4.0",
-    "npm": "6.9.0"
   }
 }

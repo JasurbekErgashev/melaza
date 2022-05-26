@@ -10,12 +10,12 @@ const ProductScreen = {
 
     after_render: () =>{
         const request = parseRequestUrl();
-        document.getElementById("add-button").addEventListener('click',
+        document.getElementById("add-button").addEventListener("click",
         () => {
-            const addCart = document.getElementById("basket");
-            let value = parseInt(addCart.innerHTML, 10);
-            value += 1;
-            document.getElementById("basket").innerHTML = value;
+            // const addCart = document.getElementById("basket");
+            // let value = parseInt(addCart.innerHTML, 10);
+            // value += 1;
+            // document.getElementById("basket").innerHTML = value;
             document.location.hash = `/cart/${request.id}`;
         });
 
