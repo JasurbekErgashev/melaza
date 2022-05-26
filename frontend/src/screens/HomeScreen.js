@@ -2,6 +2,7 @@
 // import axios from "axios";
 import { getProducts } from "../api";
 import Rating from "../components/Rating";
+import { parseRequestUrl } from "../utils";
 
 const HomeScreen = {
     
@@ -43,9 +44,10 @@ const HomeScreen = {
         // });
     },
     render: async() =>{
-       
 
-        const products = await getProducts();
+        const {value} = parseRequestUrl();
+
+        const products = await getProducts({searchKeyword: value});
         if(products.error){
             return `<div class="error">${products.error}</div>`;
         }
@@ -59,7 +61,7 @@ const HomeScreen = {
                               <img class="product-image" src="${product.image}" alt="${product.name}" data-tilt>
                           </a>
                           <div class="product-name">
-                              <a href="/#/${product._id}">
+                              <a href="/#/product/${product._id}">
                                   ${product.name}
                               </a>
                           </div>
@@ -67,7 +69,7 @@ const HomeScreen = {
                             ${Rating.render({value: `${product.rating}`, text: `${product.numReviews} reviews`})}
                           </div>
                           <div class="product-buttons">
-                              <a href="/#/cart"  class="buynow btn btn-primary" id="cartCheckout">Buy Now</a>
+                              <a href="/#/product/${product._id}"  class="buynow btn btn-primary" id="cartCheckout">Buy Now</a>
                               <div class="product-price">
                                   $${product.price}/${product.unitMeasure}
                               </div>
