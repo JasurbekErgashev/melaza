@@ -33,6 +33,8 @@ app.use("/api/uploads", uploadRouter);
 app.use("/api/users", userRouter);
 app.use("/api/products", productRouter);
 
+// displaying images by building fake pr. m
+
 app.use("/uploads", express.static(path.join(__dirname, "/../uploads")));
 
 app.use(express.static(path.join(__dirname, "/../frontend")));
@@ -48,6 +50,6 @@ app.use((err, req, res, next) =>{
     res.status(status).send({message: err.message});
 });
 
-app.listen(config.PORT, ()=> {
+app.listen(3000, ()=> {
     console.log("server is running on 3000 port!");
 });
