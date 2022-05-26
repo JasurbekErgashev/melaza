@@ -48,6 +48,6 @@ app.use((err, req, res, next) =>{
     res.status(status).send({message: err.message});
 });
 
-app.listen(3000, ()=> {
+app.listen(config.PORT, ()=> {
     console.log("server is running on 3000 port!");
 });
