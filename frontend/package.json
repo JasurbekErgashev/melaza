@@ -5,13 +5,15 @@
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --watch-content-base --open",
+    "build": "webpack --mode=production --output ./main.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Melaza team",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.27.2",
-    "bootstrap-icons": "^1.8.1"
+    "bootstrap-icons": "^1.8.1",
+    "chartist": "^0.11.4"
   },
   "devDependencies": {
     "webpack": "^4.43.0",

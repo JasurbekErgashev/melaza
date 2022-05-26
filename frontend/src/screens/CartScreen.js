@@ -80,36 +80,37 @@ const CartScreen = {
                         cartItems.map(item => `
                             <li>
                                 <div class="cart-image">
-                                    <img src="${item.image}" alt="${item.name}"/>
+                                    <img class="img-fluid" src="${item.image}" alt="${item.name}"/>
                                 </div>
                                 <div class="cart-name">
-                                      <div class="product-name">
+                                    <div class="product-name">
                                         <a href="/#/product/${item.product}">${item.name}</a>
-                                      </div>
-                                      <div class="but-select">
+                                        <div class="cart-price">
+                                            $${item.price}
+                                        </div>
+                                    </div>
+                                    <div class="but-select">
                                         <div class="select-first">
                                             <p>Quantity: </p>
-                                                <select class="qty-select form-select-sm form-select"  aria-label="Default select example" id="${item.product}">
-                                                    ${
-                                                        [...Array(item.quantityInStock).keys()].map(x => item.qty === x+1 ?
-                                                            `<option selected value="${x+1}">${x+1}</option>`
-                                                            : `<option value="${x+1}">${x+1}</option>`
-                                                            )
+                                            <select class="qty-select form-select-sm form-select"  aria-label="Default select example" id="${item.product}">
+                                                ${
+                                                    [...Array(item.quantityInStock).keys()].map(x => item.qty === x+1 ?
+                                                        `<option selected value="${x+1}">${x+1}</option>`
+                                                        : `<option value="${x+1}">${x+1}</option>`
+                                                        )
                                                     }
-                                                </select>
+                                            </select>
                                         </div>
                                         <button type="button" class="delete-button btn btn-danger" id="${item.product}">Delete</button>
-                                       </div>
+                                    </div>
                                 </div>
-                                <div class="cart-price">
-                                    $${item.price}
-                                </div>
+                                
                             </li>
                         `).join("\n")
                     }
                 </ul>
             </div>
-            <div class="cart-action">
+            <div class="cart-action mb-2">
                 <h3>Subtotal (<span>${cartItems.reduce((a, c) => a + c.qty, 0)}</span> items) : <span>$${cartItems.reduce((a, c) => a + c.price * c.qty, 0)}</span> </h3>
                 <button id="checkout-button" class="btn btn-success">Checkout</button>
             </div>

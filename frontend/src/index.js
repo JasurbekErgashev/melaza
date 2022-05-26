@@ -9,10 +9,16 @@ import RegisterScreen from "./screens/RegisterScreen";
 import ProfileScreen from "./screens/ProfileScreen";
 import AddressScreen from "./screens/AddressScreen";
 import PaymentScreen from "./screens/PaymentScreen";
+import OrderScreen from "./screens/OrderScreen";
+import DashboardScreen from "./screens/DashboardScreen";
+import ProductListScreen from "./screens/ProductListScreen";
+import ProductEditScreen from "./screens/ProductEditScreen";
+import OrderListScreen from "./screens/OrderListScreen";
 
 
 const routes = {
     "/": HomeScreen,
+    "/product/:id/edit": ProductEditScreen,
     "/product/:id": ProductScreen,
     "/cart/:id": CartScreen,
     "/cart": CartScreen,
@@ -21,6 +27,10 @@ const routes = {
     "/profile": ProfileScreen,
     "/address": AddressScreen,
     "/payment": PaymentScreen,
+    "/order": OrderScreen,
+    "/dashboard": DashboardScreen,
+    "/productlist": ProductListScreen,
+    "/orderlist": OrderListScreen,
 };
 
 const router = async() => {

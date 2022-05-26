@@ -1,7 +1,8 @@
 /* eslint-disable quotes */
-import axios from "axios";
+// import axios from "axios";
+import { getProducts } from "../api";
 import Rating from "../components/Rating";
-import { hideLoading, parseRequestUrl, showLoading } from "../utils";
+import { parseRequestUrl } from "../utils";
 
 const HomeScreen = {
     
@@ -9,11 +10,11 @@ const HomeScreen = {
 
     after_render: () =>{
 
-        const request = parseRequestUrl();
-        document.getElementById("cartCheckout").addEventListener('click',
-        () => {
-            document.location.hash = `/cart/${request.id}`;
-        });
+        // const request = parseRequestUrl();
+        // document.getElementById("cartCheckout").addEventListener('click',
+        // () => {
+        //     document.location.hash = `/cart/${request.id}`;
+        // });
 
         // document.getElementById("addBasket").addEventListener('click',
         // () => {
@@ -43,18 +44,14 @@ const HomeScreen = {
         // });
     },
     render: async() =>{
-       showLoading();
-        const response = await axios({
-            url: "http://localhost:3000/api/products",
-            headers: {
-                "Content-Type": "application/json",
-            },
-        });
-        hideLoading();
-        if(!response || response.statusText !== "OK"){
-            return "<div>Error in getting products data</div>";
+
+        const {value} = parseRequestUrl();
+
+        const products = await getProducts({searchKeyword: value});
+        if(products.error){
+            return `<div class="error">${products.error}</div>`;
         }
-        const products = response.data;
+
         return `
         <ul class="products">
         ${products.map(product=> `
@@ -64,7 +61,7 @@ const HomeScreen = {
                               <img class="product-image" src="${product.image}" alt="${product.name}" data-tilt>
                           </a>
                           <div class="product-name">
-                              <a href="/#/${product._id}">
+                              <a href="/#/product/${product._id}">
                                   ${product.name}
                               </a>
                           </div>
@@ -72,7 +69,7 @@ const HomeScreen = {
                             ${Rating.render({value: `${product.rating}`, text: `${product.numReviews} reviews`})}
                           </div>
                           <div class="product-buttons">
-                              <a href="/#/cart"  class="buynow btn btn-primary" id="cartCheckout">Buy Now</a>
+                              <a href="/#/product/${product._id}"  class="buynow btn btn-primary" id="cartCheckout">Buy Now</a>
                               <div class="product-price">
                                   $${product.price}/${product.unitMeasure}
                               </div>
